@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import ClientRate from './components/client';
+import Suppliers from './components/suppliers';
+import Margin from './components/margin';
+import React, { useState, useEffect } from 'react';
+import getRemoteRates from './ratesService';
 
 function App() {
+
+  const [clientRate, setClientRate] = useState(0);
+  const [supplierCost, setSupplierCost] = useState(0);
+  const [rates, setRates] = useState([]);
+
+  useEffect(() => {
+    console.log('#1 - get rates');
+    getRemoteRates().then((res) => {
+      const rates = Object.entries(res.rates);
+      setRates(rates);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <ClientRate rates={rates} onUpdate={setClientRate} />
+      {<Suppliers rates={rates} onUpdate={setSupplierCost} />}
+      {<Margin clientRate={clientRate} supplierCost={supplierCost} />}
     </div>
   );
 }

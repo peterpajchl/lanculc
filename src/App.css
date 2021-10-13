@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app {
+  margin: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+input, select, button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+}
+
+input[type=number] {
+  text-align: right;
+}
+
+.primary-button {
+  background-color: tomato;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.service-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.client-form,
+.service-row {
+  display: flex;
+  align-items: center;
+}
+
+.client-form > *,
+.service-row > * {
+  margin-right: 2rem;
+  font-size: 1rem;
+}
+
+.service-row {
+  padding: 16px 0;
+  margin-bottom: 8px;
+  background-color: #e8eaed;
+}
+
+.service-row:last-child {
+  border-bottom: 0;
+}
+
+.service-row__description {
+  flex-grow: 2;
+}
+
+.service-row__index {
+  width: 40px;
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.service-row__rate {
+  width: 100px;
+  text-align: right;
+}
+
+.total-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.margin__value {
+  font-size: 2rem;
+  font-weight: bold;
 }
